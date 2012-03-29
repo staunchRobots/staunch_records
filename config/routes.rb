@@ -1,7 +1,7 @@
 StaunchRobots::Application.routes.draw do
-  resources :categories
-
-  resources :products
+  resources :categories do
+    resources :products
+  end
 
   root to: 'categories#index'
 

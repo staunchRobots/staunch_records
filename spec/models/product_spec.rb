@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Product do
   
-  before { @product = Product.new(album: "Hey Jude", artist: "The Beatles", qty: 1, price: 1000.00, on_sale: :true, sale_price: 900.99) }
+  let(:category) { @category = Category.new(name: "Rock", color: "grey") }
+  before { @product = category.products.build(album: "Hey Jude", artist: "The Beatles", qty: 1, price: 1000.00, on_sale: :true, sale_price: 900.99) }
 
   subject { @product }
 
@@ -13,6 +14,9 @@ describe Product do
   it { should respond_to(:price) }
   it { should respond_to(:on_sale) }
   it { should respond_to(:sale_price) }
+  it { should respond_to(:category_id) }
+  it { should respond_to(:category) }
+  its(:category) { should == category }
 
   it { should be_valid }
 
@@ -28,6 +32,11 @@ describe Product do
 
   describe "with blank on_sale" do
     before { @product.on_sale = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with blank category_id" do
+    before { @product.category_id = " " }
     it { should_not be_valid }
   end
 
