@@ -9,6 +9,7 @@ describe Product do
   it { should respond_to(:album) }
   it { should respond_to(:artist) }
   it { should respond_to(:qty) }
+  it { should respond_to(:description) }
   it { should respond_to(:price) }
   it { should respond_to(:on_sale) }
   it { should respond_to(:sale_price) }
@@ -25,7 +26,7 @@ describe Product do
     it { should_not be_valid }
   end
 
-  describe "with blank on_same" do
+  describe "with blank on_sale" do
     before { @product.on_sale = " " }
     it { should_not be_valid }
   end
