@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Product do
   
-  let(:category) { @category = Category.new(name: "Rock", color: "grey") }
+  let(:category) { FactoryGirl.create(:category) }
   before { @product = category.products.build(album: "Hey Jude", artist: "The Beatles", qty: 1, price: 1000.00, on_sale: :true, sale_price: 900.99) }
 
   subject { @product }
