@@ -2,13 +2,12 @@ require 'spec_helper'
 
 describe Product do
   
-  before { @product = Product.new(album: "Hey Jude", artist: "The Beatles", description: "Original U.K. 1968 promotional LP", qty: 1, price: 1000.00, on_sale: true, sale_price: 900.99) }
+  before { @product = Product.new(album: "Hey Jude", artist: "The Beatles", qty: 1, price: 1000.00, on_sale: :true, sale_price: 900.99) }
 
   subject { @product }
 
   it { should respond_to(:album) }
   it { should respond_to(:artist) }
-  it { should respond_to(:description) }
   it { should respond_to(:qty) }
   it { should respond_to(:price) }
   it { should respond_to(:on_sale) }
@@ -26,23 +25,28 @@ describe Product do
     it { should_not be_valid }
   end
 
-  describe "with blank qty" do
-    before { @product.qty = " " }
-    it { should_not be_valid }
-  end
-
-  describe "with blank price" do
-    before { @product.price = " " }
-    it { should_not be_valid }
-  end
-
-  describe "with blank on_sale" do
+  describe "with blank on_same" do
     before { @product.on_sale = " " }
     it { should_not be_valid }
   end
 
+  describe "with a non-numeric qty" do
+    before { @product.qty = "string" }
+    it { should_not be_valid }
+  end
+
+  describe "with a non-numeric price" do
+    before { @product.price = "string" }
+    it { should_not be_valid }
+  end
+
+  describe "with a non-numeric on_sale" do
+    before { @product.on_sale = "string" }
+    it { should_not be_valid }
+  end
+
   describe "with invalid qty" do
-    before { @product.on_sale = -1 }
+    before { @product.qty = -1 }
     it { should_not be_valid }
   end
 
@@ -52,11 +56,16 @@ describe Product do
   end
 
   describe "with invalid on_sale" do
-    before { @product.price = "true" }
+    before { @product.on_sale = "other" }
     it { should_not be_valid }
   end
 
-  describe "with invalid sale_price" do
+  describe "with invalid low sale_price" do
+    before { @product.sale_price = -1 }
+    it { should_not be_valid }
+  end
+
+  describe "with invalid high sale_price" do
     before { @product.sale_price = @product.price + 1 }
     it { should_not be_valid }
   end
