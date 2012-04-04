@@ -7,15 +7,10 @@ describe Product do
 
   subject { @product }
 
-  it { should respond_to(:album) }
-  it { should respond_to(:artist) }
-  it { should respond_to(:qty) }
-  it { should respond_to(:description) }
-  it { should respond_to(:price) }
-  it { should respond_to(:on_sale) }
-  it { should respond_to(:sale_price) }
-  it { should respond_to(:category_id) }
-  it { should respond_to(:category) }
+  %w(album artist qty description price on_sale sale_price category_id category).each do |field|
+    it { should respond_to(field) }
+  end
+
   its(:category) { should == category }
 
   it { should be_valid }

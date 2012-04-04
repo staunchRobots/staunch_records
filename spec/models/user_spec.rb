@@ -6,14 +6,9 @@ describe User do
 
   subject { @user }
 
-  it { should respond_to(:email) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_me) }
-  it { should respond_to(:first_name) }
-  it { should respond_to(:last_name) }
-  it { should respond_to(:birthday) }
-  it { should respond_to(:country) }
+  %w(email password password_confirmation remember_me first_name last_name birthday country).each do |field|
+    it { should respond_to(field) }
+  end
 
   it { should be_valid }
 

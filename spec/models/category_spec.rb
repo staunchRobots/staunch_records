@@ -6,8 +6,9 @@ describe Category do
 
   subject { @category }
 
-  it { should respond_to :name }
-  it { should respond_to :color }
+  %w(name color).each do |field|
+    it { should respond_to(field) }
+  end
 
   it { should be_valid }
 
