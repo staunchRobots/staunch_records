@@ -1,8 +1,10 @@
 StaunchRobots::Application.routes.draw do
 
+  devise_for :users
   resources :categories do
     resources :products
   end
+  resources :products, only: [:index]
 
   root to: 'categories#index'
 

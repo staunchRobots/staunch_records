@@ -1,2 +1,18 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<div class="col_boxes_5">
+  <div class="clr"></div>
+  <div class="separator_clear_small"></div>
+  <% if @random_products %>
+    <% @random_products.each do |product| %>
+      <div class="col_box_5 last">
+        <h3>&rarr; <%= product.album %></h3>
+        <p><%= product.artist %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>Staunch Records is out of stock.</h2>
+  <% end %>    
+</div>
+
+<div class="clr"></div>
+<div class="separator_clear"></div>
+<div class="clr"></div>

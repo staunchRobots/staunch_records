@@ -1,2 +1,19 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="col_boxes_5">
+  <div class="clr"></div>
+  <div class="separator_clear_small"></div>
+  <% if @category_products %>
+  <h2><% "#{@category.name} products" %></h2>
+    <% @category_products.each do |product| %>
+      <div class="col_box_5 last">
+        <h3>&rarr; <%= product.album %></h3>
+        <p><%= product.artist %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>There are no products for this category.</h2>
+  <% end %>    
+</div>
+
+<div class="clr"></div>
+<div class="separator_clear"></div>
+<div class="clr"></div>
