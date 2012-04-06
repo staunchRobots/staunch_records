@@ -1,2 +1,30 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<% if @products.present? %>
+<h1>Products</h1>
+  <table>
+    <tr>
+      <th><h2>Album</h2></th>
+      <th><h2>Artist</h2></th>
+      <th><h2>Description</h2></th>
+      <th><h2>Price</h2></th>
+      <th></th>
+    </tr>
+  <% @products.each do |product|%>
+    <tr>
+      <% if product.qty > 0 %>
+        <td><h2><%= product.album %></h2></td>
+        <td><h2><%= product.artist %></h2></td>
+        <td><h2><%= product.description %></h2></td>
+        <% if product.on_sale %>
+          <td><h2><%= product.sale_price %></h2></td>
+          <td style="color:#FF0000;"><h2>On sale!</h2></td>
+        <% else %>
+          <td><h2>$<%= product.price %></h2></td>
+          <td></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <h1>No products matched your search.</h1>
+<% end %>
