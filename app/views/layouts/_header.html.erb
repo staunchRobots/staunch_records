@@ -1,0 +1,44 @@
+<div class="header"> 
+  <div class="header_resize">
+    <div class="logo">
+      <h1><%= link_to "staunch records", root_path %></h1>
+    </div>
+    <!-- search -->
+    <div class="searchform">
+      <%= form_tag products_path(), method: :get, id: 'formsearch', name: 'formsearch' do %>
+      <span>
+        <%= text_field_tag 'editbox_search', params[:search], maxlength: 80, placeholder: "Search...", class: "editbox_search" %>
+      </span>
+        <%= image_submit_tag "search_btn.png", alt: "search", class: "button_search", name: "button_search", name: nil %>
+      <% end %>
+    </div>
+    <!-- /search --> 
+    <!-- menu -->
+    <div class="menu">
+      <ul class="menusm">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About us", '#' %></li>
+        <li><%= link_to "Categories", '#' %>
+          <ul>
+            <% category_list.each do |category| %>
+              <li><% link_to category.name, '#' %></li>
+            <% end %>
+          </ul>
+        </li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Account", edit_user_path(current_user) %></li>
+          <li class="last_pos"><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path)  %></li>
+            <li class="last_pos"><%= link_to 'Sign up', new_user_registration_path %></li>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <!-- /menu --> 
+    <div class="clr"></div>
+  </div>
+  <div class="clr"></div>
+  <div class="header_sep"></div>
+  <div class="clr"></div>
+</div>

@@ -1,16 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StaunchRobots</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Staunch Records</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "menusm", media: "all" %>
+  <%= stylesheet_link_tag    "style", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "cufon-headers_font" %>
+  <%= javascript_include_tag "cufon-libsans-r-b" %>
+  <%= javascript_include_tag "cufon-yui" %>
+  <%= javascript_include_tag "jquery.color" %>
+  <%= javascript_include_tag "menusm" %>
+  <%= javascript_include_tag "scripts" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
+
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+  <div class="main">
+    <div id="main_page">
+      <div class="page_index">
+        <%= render 'layouts/header' %>
+        <div class="content">         
+          <div class="clr"></div>
+          <!-- now_page -->
+          <div class="now_page">
+            <div class="now_page_sep"></div>
+            <div class="now_page_resize">
+              <div class="clr"></div>
+            </div>
+            <div class="clr"></div>
+            <div class="now_page_sep"></div>
+            <div class="clr"></div>
+          </div>
+          <div class="clr"></div>
+          <!-- /now_page -->
+          <div class="content_resize"> 
+            <h2 class="notice" style="color:#336600;"><%= notice %></h2>
+            <h2 class="alert" style="color:#FF0000;"><%= alert %></h2>
+            <!--content_index-->
+            <div class="content_index">
+              <%= yield %>
+            </div>
+          </div>
+          <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+      </div>
+      <!-- footer -->
+      <div class="footer">
+        <%= render 'layouts/footer' %>
+      </div>
+      <!-- /footer --> 
+    </div>
+    <div class="clr"></div> 
+  </div>
 </body>
 </html>
