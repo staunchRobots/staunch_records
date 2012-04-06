@@ -27,16 +27,6 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "with blank first_name" do
-    before { @user.first_name = " " }
-    it { should_not be_valid }
-  end
-
-  describe "with blank last_name" do
-    before { @user.last_name = " " }
-    it { should_not be_valid }
-  end
-
   describe "with invalid email" do
     invalid_addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     invalid_addresses.each do |invalid_address|

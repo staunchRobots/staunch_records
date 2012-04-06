@@ -45,8 +45,8 @@ describe Product do
     it { should_not be_valid }
   end
 
-  describe "with a non-numeric on_sale" do
-    before { @product.on_sale = "string" }
+  describe "with a non-numeric sale_price" do
+    before { @product.sale_price = "string" }
     it { should_not be_valid }
   end
 
@@ -61,7 +61,7 @@ describe Product do
   end
 
   describe "with invalid on_sale" do
-    before { @product.on_sale = "other" }
+    before { @product.on_sale = "whatever" }
     it { should_not be_valid }
   end
 
