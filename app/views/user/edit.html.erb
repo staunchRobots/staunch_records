@@ -1,0 +1,52 @@
+<h1>Account Information</h1>
+<%= form_for @user, url: { action: :update }, :html => { :multipart => true } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <table>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name %></td>
+    </dtr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :birthday %></td>
+      <td><%= f.text_field :birthday %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :country %></td>
+      <td><%= f.text_field :country %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :email %></td>
+      <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :password %></td>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :password_confirmation %></td>
+      <td><%= f.password_field :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;"><%= f.label :profile_picture %></td>
+      <td><%= f.file_field :profile_picture %></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2"><%= f.submit "Save" %></td>
+    </tr>
+  </table>
+<% end %>

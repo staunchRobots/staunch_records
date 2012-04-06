@@ -1,0 +1,25 @@
+<h1> <%= @product.album %> </h1>
+<table>
+  <tr>
+    <td style="font-weight:bold;"><h2>Artist</h2></td>
+    <td><h2><%= @product.artist %></h2></td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold;"><h2>Description</h2></td>
+    <td><h2><%= @product.description %></h2></td>
+  </tr>
+  <% if @product.on_sale %>
+    <tr>
+      <td style="font-weight:bold;"><h2>Price</h2></td>
+      <td><h2>$<%= @product.sale_price %></h2></td>
+    </tr>
+    <tr>
+      <td colspan="2"><h2 style="color:#FF0000;">This album in on sale!</h2></td> <td></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td style="font-weight:bold;"><h2>Price</h2></td>
+      <td><h2>$<%= @product.price %></h2></td>
+    </tr>
+  <% end %>
+</table>
