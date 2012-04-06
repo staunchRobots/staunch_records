@@ -1,6 +1,7 @@
 StaunchRobots::Application.routes.draw do
 
   devise_for :users
+  resources :user, only: [:edit, :update]
   resources :categories do
     resources :products
   end
