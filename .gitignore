@@ -12,4 +12,8 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.lck
 /tmp
+
+# Ignore profile_pictures
+/public/system/profile_pictures
