@@ -30,19 +30,25 @@
       <td><%= f.text_field :country %></td>
     </tr>
     <tr>
-      <td style="font-weight:bold;"><%= f.label :email %></td>
+      <td style="font-weight:bold;"><%= f.label :email %>*</td>
       <td><%= f.email_field :email %></td>
     </tr>
     <tr>
-      <td style="font-weight:bold;"><%= f.label :password %></td>
+      <td style="font-weight:bold;"><%= f.label :password %>*</td>
       <td><%= f.password_field :password %></td>
     </tr>
     <tr>
-      <td style="font-weight:bold;"><%= f.label :password_confirmation %></td>
+      <td style="font-weight:bold;"><%= f.label :password_confirmation %>*</td>
       <td><%= f.password_field :password_confirmation %></td>
     </tr>
     <tr>
       <td style="font-weight:bold;"><%= f.label :profile_picture %></td>
+      <td>\</td>
+    </tr>
+    <tr>
+      <%if @user.profile_picture %>
+        <td><%= image_tag @user.profile_picture.url(:thumb) %></td>
+      <% end %>
       <td><%= f.file_field :profile_picture %></td>
     </tr>
     <tr>
