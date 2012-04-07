@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, :password, :password_confirmation
   validates_uniqueness_of :email
+  validates_attachment  :profile_picture,
+                        content_type: { content_type: ["image/jpg", "image/png", "image/gif"] },
+                        size: { in: 0..500.kilobytes }
+
+
 end
