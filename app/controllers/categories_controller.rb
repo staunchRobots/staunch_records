@@ -11,6 +11,9 @@ class CategoriesController < ApplicationController
     @category_products = @category.products.where("qty > 0")
   end
 
+  def about_us
+  end
+
   private
 
     def random_products

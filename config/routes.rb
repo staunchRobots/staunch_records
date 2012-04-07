@@ -1,6 +1,9 @@
 StaunchRobots::Application.routes.draw do
 
+  match 'about' => 'categories#about_us', :as => :about
+
   devise_for :users
+
   resources :user, only: [:edit, :update]
   resources :categories do
     resources :products
