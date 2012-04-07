@@ -1,4 +1,4 @@
-<h1>Account Information</h1>
+<h1>Update Account</h1>
 <%= form_for @user, url: { action: :update }, :html => { :multipart => true } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -43,12 +43,6 @@
     </tr>
     <tr>
       <td><%= f.label :profile_picture %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <%if @user.profile_picture %>
-        <td><%= image_tag @user.profile_picture.url(:thumb) %></td>
-      <% end %>
       <td><%= f.file_field :profile_picture %></td>
     </tr>
     <tr>
