@@ -1,6 +1,6 @@
 StaunchRobots::Application.routes.draw do
 
-  match 'about' => 'categories#about_us', :as => :about
+  match 'about' => 'categories#about_us', as: :about
 
   devise_for :users
 
