@@ -60,8 +60,8 @@ describe Product do
     it { should_not be_valid }
   end
 
-  describe "with invalid on_sale" do
-    before { @product.on_sale = "whatever" }
+  describe "with invalid on_sale value" do
+    before { @product.on_sale = "yes" }
     it { should_not be_valid }
   end
 
