@@ -6,7 +6,7 @@ describe User do
 
   subject { @user }
 
-  %w(email password password_confirmation remember_me first_name last_name birthday country).each do |field|
+  %w(email password password_confirmation remember_me first_name last_name birthday country admin).each do |field|
     it { should respond_to(field) }
   end
 
@@ -64,6 +64,11 @@ describe User do
   describe "with a password that's too long" do
     before { @user.password = @user.password_confirmation = "a" * 21 }
     it { should be_invalid }
+  end
+
+  describe "with invalid admin value" do
+    before { @user.admin = "yes" }
+    it { should_not be_invalid }
   end
  
 end
