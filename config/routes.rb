@@ -10,6 +10,12 @@ StaunchRobots::Application.routes.draw do
   end
   resources :products, only: [:index]
 
+  namespace :admin do
+    resources :products
+  end
+
+  match '/admin' => 'admin/products#index', as: :admin
+
   root to: 'categories#index'
 
   # The priority is based upon order of creation:

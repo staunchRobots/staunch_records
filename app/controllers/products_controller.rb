@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @search = Product.search do
-      fulltext params[:search]
+      fulltext params[:q]
     end
     @products = @search.results if @search
   end

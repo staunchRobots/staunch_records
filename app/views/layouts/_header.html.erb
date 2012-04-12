@@ -7,7 +7,7 @@
     <div class="searchform">
       <%= form_tag products_path(), method: :get, id: 'formsearch', name: 'formsearch' do %>
       <span>
-        <%= text_field_tag 'editbox_search', params[:search], maxlength: 80, placeholder: "Search...", class: "editbox_search" %>
+        <%= text_field_tag 'q', params[:q], maxlength: 80, placeholder: "Search...", class: "editbox_search" %>
       </span>
         <%= image_submit_tag "search_btn.png", alt: "search", class: "button_search", name: "button_search", name: nil %>
       <% end %>
