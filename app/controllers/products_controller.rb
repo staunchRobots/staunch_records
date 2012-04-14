@@ -13,7 +13,9 @@ class ProductsController < ApplicationController
     @product = @category.products.find(params[:id])
   end
 
-  def get_category
-    @category = Category.find(params[:category_id])
-  end
+  private
+
+    def get_category
+      @category = Category.find(params[:category_id])
+    end
 end
