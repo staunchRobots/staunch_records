@@ -1,4 +1,13 @@
 <h1> <%= @product.album %> </h1>
+
+<div class="center">
+  <% if @product.picture.exists? %>
+    <%= image_tag @product.picture.url(:small), class: "thumbnail" %>
+  <% else %>
+    <%= image_tag "default-product.jpg", size: "176x176" %>
+  <% end %>
+</div>
+
 <table>
   <tr>
     <td><h2>Artist</h2></td>
