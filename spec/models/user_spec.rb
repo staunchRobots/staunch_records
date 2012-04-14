@@ -17,16 +17,6 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "with blank password" do
-    before { @user.password = " " }
-    it { should_not be_valid }
-  end
-
-  describe "with blank password_confirmation" do
-    before { @user.password_confirmation = " " }
-    it { should_not be_valid }
-  end
-
   describe "with invalid email" do
     invalid_addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     invalid_addresses.each do |invalid_address|
