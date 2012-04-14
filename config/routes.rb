@@ -11,10 +11,10 @@ StaunchRobots::Application.routes.draw do
   resources :products, only: [:index]
 
   namespace :admin do
-    resources :products
+    resources :products, :categories, :users
   end
 
-  match '/admin' => 'admin/products#index', as: :admin
+  match '/admin' => 'admin/categories#index', as: :admin
 
   root to: 'categories#index'
 
@@ -60,7 +60,7 @@ StaunchRobots::Application.routes.draw do
 
   # Sample resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # Directs /admin/products/* to ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
