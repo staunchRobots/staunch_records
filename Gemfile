@@ -5,6 +5,7 @@ gem 'devise', '2.0.4'
 gem 'sunspot_rails'
 gem 'paperclip', '3.0'
 gem 'simple_form'
+gem 'bootstrap-sass', '2.0.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
