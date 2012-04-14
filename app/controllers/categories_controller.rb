@@ -17,6 +17,6 @@ class CategoriesController < ApplicationController
   private
 
     def random_products
-      @random_products = Product.where("qty > 0").limit(10).order("random()")
+      @random_products = Product.where("qty > 0").limit(5).order("random()")
     end
 end
