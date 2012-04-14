@@ -1,1 +1,63 @@
-<%= yield %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Staunch Records | Admin</title>
+  <%= stylesheet_link_tag "admin/admin", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div style="font-family: Skia, sans-serif">
+        <%= link_to 'staunch records', admin_products_path, id: "logo" %>
+      </div>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to 'Categories', admin_categories_path %></li>
+          <li><%= link_to 'Products', admin_products_path %></li>
+          <li><%= link_to 'Users', admin_users_path %></li>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <div class="container">
+    <div class="notice" id="notice">
+      <div class"alert alert-success"><%= notice %></div>
+      <div class"alert alert-error"><%= alert %></div>
+    </div>
+
+    <%= yield %>
+
+    <footer class="footer">
+      <small>
+        Staunch Records
+        <a href="https://github.com/sebasoga/staunch_robots">by Staunch Robots</a>
+      </small>
+      <nav>
+        <ul>
+          <li><a href="https://github.com/sebasoga/staunch_records">Source</a></li>
+          <li> | </li>
+          <li><a href="https://github.com/sebasoga/staunch_records/issues">Report a bug</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </div>
+
+  <script languaje="javascript">
+    var data = {};
+      data[compv.tools.csrf_param()] = compv.tools.csrf_token();
+      $.destroy({
+        url: element.attr('data-destroy-url'),
+        success: mapping.success,
+        data: data
+      });
+  </script>
+
+</body>
+</html>

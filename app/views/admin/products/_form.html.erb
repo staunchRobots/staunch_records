@@ -1,0 +1,30 @@
+<div class="well">
+  <div class="row">
+    <div class="span6 offset3">
+    
+      <%= simple_form_for [:admin, @admin_product], html: { :multipart => true }  do |f| %>
+        <div class"alert alert-error">
+          <%= f.error_notification %>
+          <%= @admin_product.errors.full_messages.join(', ') %>
+        </div>
+
+        <fieldset class="control-group-error">
+            <%= f.input :album %>
+            <%= f.input :artist %>
+            <%= f.input :description %>
+            <%= f.association :category %>
+            <%= f.input :qty %>
+            <%= f.input :price %>
+            <%= f.input :picture %>
+            <%= f.input :sale_price %>
+            <%= f.input :on_sale %>
+        </fieldset>
+
+        <div class="center">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<h1>Product Details</h1>
+
+<div class="well">
+  <div class="row">
+    <div class="span6 offset3">
+
+      <div class"center">
+        <% if @admin_product.picture.exists? %>
+          <%= image_tag @admin_product.picture.url(:small), class: "thumbnail" %>
+        <% else %>
+          <%= image_tag "default-product.jpg", size: "176x176" %>
+        <% end %>
+      </div>
+  
+      <table class="table table-bordered">
+        <tr>
+          <td><b>Album:</b></td>
+          <td><%= @admin_product.album %></td>
+        </tr>
+
+        <tr>
+          <td><b>Artist:</b></td>
+          <td><%= @admin_product.artist %></td>
+        </tr>
+
+        <tr>
+          <td><b>Description:</b></td>
+          <td><%= @admin_product.description %></td>
+        </tr>
+
+        <tr>
+          <td><b>Quantity:</b></td>
+          <td><%= @admin_product.qty %></td>
+        </tr>
+
+        <tr>
+          <td><b>Price:</b></td>
+          <td><%= @admin_product.price %></td>
+        </tr>
+
+        <tr>
+          <td><b>On sale:</b></td>
+          <td>
+            <% if @admin_product.on_sale %>
+              Yes
+            <% else %>
+              No
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>Sale price:</b></td>
+          <td><%= @admin_product.sale_price %></td>
+        </tr>
+        
+        <tr> 
+          <td><b>Category:</b></td>
+          <td><%= @admin_product.category_id %></td>
+        </tr>
+      </table>
+
+      <div class="center">
+        <%= link_to 'Edit', edit_admin_product_path(@admin_product), class: "btn btn-primary" %> |
+        <%= link_to 'Back', admin_products_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+</div>

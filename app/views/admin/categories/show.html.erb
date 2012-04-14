@@ -1,0 +1,26 @@
+<h1>Category Details</h1>
+
+<div class="well">
+  <div class="row">
+    <div class="span6 offset3">
+
+     <table class="table table-bordered">
+        <tr>
+          <td><b>Name:</b></td>
+          <td><%= @admin_category.name %></td>
+        </tr>
+
+        <tr>
+          <td><b>Color:</b></td>
+          <td><%= @admin_category.color %></td>
+        </tr>
+      </table>
+
+      <div class="center">
+        <%= link_to 'Edit', edit_admin_category_path(@admin_category), class: "btn btn-primary" %> |
+        <%= link_to 'Back', admin_categories_path, class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  </div>
+</div>

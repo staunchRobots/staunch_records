@@ -4,6 +4,11 @@
   <% if @random_products %>
     <% @random_products.each do |product| %>
       <div class="col_box_5 last">
+        <% if product.picture.exists? %>
+          <%= link_to image_tag(product.picture.url(:small), class: "thumbnail"), category_product_path(product.category, product) %>
+        <% else %>
+          <%= link_to image_tag("default-product.jpg", size: "176x176", class: "thumbnail"), category_product_path(product.category, product) %>
+        <% end %>
         <h3>&rarr; <%= product.album %></h3>
         <p><%= product.artist %></p>
       </div>

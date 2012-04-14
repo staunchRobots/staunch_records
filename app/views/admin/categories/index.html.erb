@@ -1,0 +1,31 @@
+<h1>List of Categories</h1>
+
+<div class="center">
+  <%= will_paginate @admin_categories %>
+</div>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Color</th>
+    <th colspan="3" style="text-align:center;">Actions</th>
+  </tr>
+
+<% @admin_categories.each do |admin_category| %>
+  <tr>
+    <td><%= admin_category.name %></td>
+    <td><%= admin_category.color %></td>
+    <td><%= link_to 'Show', [:admin, admin_category], class: "btn btn-primary" %></td>
+    <td><%= link_to 'Edit', edit_admin_category_path(admin_category), class: "btn btn-primary" %></td>
+    <td><%= link_to 'Destroy', [:admin, admin_category], confirm: 'Are you sure?', method: :delete, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="center">
+  <%= will_paginate @admin_categories %>
+  <br />
+  <%= link_to 'New Category', new_admin_category_path, class: "btn btn-primary"  %>
+</div>
+
+<br />

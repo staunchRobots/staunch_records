@@ -1,0 +1,22 @@
+<div class="well">
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= simple_form_for [:admin, @admin_category] do |f| %>
+        <div class"alert alert-error">
+          <%= f.error_notification %>
+        </div>
+
+        <fieldset class="control-group-error">
+          <%= f.input :name %>
+          <%= f.input :color %>
+        </fieldset>
+
+          <div class="center">
+            <%= f.button :submit, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
