@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20120413081120) do
     t.datetime "picture_updated_at"
   end
 
+  add_index "products", ["slug"], :name => "index_products_on_slug"
+
   create_table "users", :force => true do |t|
     t.string   "email",                        :default => "",    :null => false
     t.string   "encrypted_password",           :default => "",    :null => false

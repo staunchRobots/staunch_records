@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :album, use: :slugged
 
   has_attached_file :picture,
                     styles: { small: "176x176>", big: "500x500>" },
