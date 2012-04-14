@@ -18,3 +18,4 @@
 
 # Ignore profile_pictures
 /public/system/profile_pictures
+/public/system/pictures
