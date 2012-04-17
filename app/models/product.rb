@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
   attr_accessible :album, :artist, :description, :qty, :price, :on_sale, :sale_price, :category_id, :picture
 
   belongs_to :category
+  has_many :cart_items
+  has_many :carts, through: :cart_items
 
   validates_presence_of   :album, :artist, :category_id, :qty, :price#, :picture
   validates :qty,         numericality: { greater_than_or_equal_to: 0 }

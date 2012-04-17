@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
                     styles: { medium: "300x300>", thumb: "100x100>" },
                     path: ":rails_root/public/system/:attachment/:id/:style/:filename",
                     url: "/system/:attachment/:id/:style/:filename"
+  has_one :cart
+
+  after_create :create_user_cart
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :birthday, :country, :profile_picture, :admin
 
@@ -17,4 +20,10 @@ class User < ActiveRecord::Base
   validates_attachment_size :profile_picture, in: 0..500.kilobytes
 
   validates_inclusion_of :admin, in: [true, false]
+
+  private
+
+  def create_user_cart
+    Cart.create_user_cart(self.id)
+  end
 end
