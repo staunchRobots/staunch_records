@@ -11,9 +11,10 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
 
-  validates_presence_of   :album, :artist, :category_id, :qty, :price, :picture
+  validates_presence_of   :album, :artist, :category_id, :qty, :price#, :picture
   validates :qty,         numericality: { greater_than_or_equal_to: 0 }
   validates :price,       numericality: { greater_than: 0 }
+  validates :category_id, numericality: { greater_than: 0 }
   validates :sale_price,  numericality: { greater_than: 0, less_than_or_equal_to: :price }
   validates :on_sale ,    inclusion: { in: [true, false] }
   validates_attachment_size  :picture, in: 0..2.megabytes
