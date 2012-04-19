@@ -1,18 +1,21 @@
 StaunchRobots::Application.routes.draw do
 
-  match 'about' => 'categories#about_us', as: :about
-
   devise_for :users
 
   resources :user, only: [:show, :edit, :update]
+  resources :products, only: [:index]
+  resources :carts, only: [:show]
+  resources :cart_items, only: [:add, :destroy]
+  
   resources :categories do
     resources :products
   end
-  resources :products, only: [:index]
 
   namespace :admin do
     resources :products, :categories, :users
   end
+
+  match 'about' => 'categories#about_us', as: :about
 
   match '/admin' => 'admin/categories#index', as: :admin
 
