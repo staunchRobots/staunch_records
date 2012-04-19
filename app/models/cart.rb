@@ -7,6 +7,6 @@ class Cart < ActiveRecord::Base
 
   # Creates a cart for a newly created user
   def self.create_user_cart(user_id)
-    self.create(user_id: user_id)
+    create(user_id: user_id)
   end
 end
