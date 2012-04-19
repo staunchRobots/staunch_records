@@ -15,8 +15,8 @@ StaunchRobots::Application.routes.draw do
     resources :products, :categories, :users
   end
 
-  match 'about' => 'categories#about_us', as: :about
-
+  match '/cart' => 'carts#show', as: :show
+  match '/about' => 'categories#about_us', as: :about
   match '/admin' => 'admin/categories#index', as: :admin
 
   root to: 'categories#index'
