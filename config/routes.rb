@@ -5,7 +5,7 @@ StaunchRobots::Application.routes.draw do
   resources :user, only: [:show, :edit, :update]
   resources :products, only: [:index]
   resources :carts, only: [:show]
-  resources :cart_items, only: [:add, :destroy]
+  resources :cart_items, only: [:create, :destroy]
   
   resources :categories do
     resources :products
@@ -15,7 +15,7 @@ StaunchRobots::Application.routes.draw do
     resources :products, :categories, :users
   end
 
-  match '/cart' => 'carts#show', as: :show
+  match '/cart' => 'carts#show', as: :cart
   match '/about' => 'categories#about_us', as: :about
   match '/admin' => 'admin/categories#index', as: :admin
 
