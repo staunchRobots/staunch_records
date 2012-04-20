@@ -14,7 +14,7 @@ class SampleData
     puts "Creating categories"
     # Creates 5 categories
     { rock: "#FFFFFF", blues: "#0000FF", jazz: "#FF0000", classical: "#111111", folk: "#00FF00" }. each do |name, color|
-      Category.create!(name: name, color: color)
+      Category.create!(name: name.capitalize, color: color)
     end
   end
 
@@ -22,9 +22,9 @@ class SampleData
     Product.delete_all
     puts "Creating products"
     category_ids = Category.all.map(&:id)
-    10.times do |i|
+    30.times do |i|
       Product.create!(album: "Whatever#{i}", 
-        artist: "Bob Marley #{10-i}", 
+        artist: "Bob Marley #{31-i}", 
         category_id: category_ids.sample, 
         sale_price: 5,
         on_sale: false,
