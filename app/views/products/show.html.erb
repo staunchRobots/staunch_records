@@ -8,6 +8,8 @@
   <% end %>
 </div>
 
+<%= link_to 'Add to cart', cart_items_path(id: @product.id), method: :post %>
+
 <table>
   <tr>
     <td><h2>Artist</h2></td>
