@@ -1,2 +1,26 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1>Cart</h1>
+<% if @cart.products.empty? %> 
+  <h2>Your cart is empty</h2>
+<% else %>
+  <table>
+    <tr>
+      <th><h2>Album</h2></th>
+      <th><h2>Artist</h2></th>
+      <th><h2>Price</h2></th>
+      <th></th>
+    </tr>
+    <% @cart.cart_items.each do |cart_item| %>
+      <tr>
+        <td><h2><%= cart_item.product.album %></h2></td>
+        <td><h2><%= cart_item.product.artist %></h2></td>
+        <% if cart_item.product.on_sale %>
+          <td><h2><%= cart_item.product.sale_price %></h2></td>
+        <% else %>
+          <td><h2><%= cart_item.product.price %></h2></td>
+        <% end %>
+        <td><%= link_to 'Remove from cart', cart_item_path(id: cart_item.id), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to 'Checkout', '#' %>
+<% end %>
