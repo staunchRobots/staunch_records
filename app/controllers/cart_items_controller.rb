@@ -1,14 +1,14 @@
 class CartItemsController < ApplicationController
-  def add  
-  @cart_item = CartItem.new(product_id: params[:id], user_id: current_user.id))
+  def create
+  @cart_item = CartItem.new(product_id: params[:id], cart_id: current_user.cart.id)
 
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to [:admin, @admin_category], notice: 'The product was added to the cart' }
-        format.json { render json: @admin_category, status: :created, location: @admin_category }
+        format.html { redirect_to :back, notice: 'The product was added to the cart' }
+        format.json { render json: @cart_item, status: :created, location: @cart_item }
       else
-        format.html { render action: "new" }
-        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back, notice: 'The product could not be added to the cart' }
+        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -18,7 +18,7 @@ class CartItemsController < ApplicationController
     @cart_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_categories_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
