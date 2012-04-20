@@ -24,4 +24,9 @@ class Product < ActiveRecord::Base
   searchable do
     text :album, :artist, :description
   end
+
+  def total
+    on_sale ? sale_price : price
+  end
+
 end

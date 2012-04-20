@@ -9,4 +9,8 @@ class Cart < ActiveRecord::Base
   def self.create_user_cart(user_id)
     create(user_id: user_id)
   end
+
+  def total
+    products.to_a.sum(&:total)
+  end
 end

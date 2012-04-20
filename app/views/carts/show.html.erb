@@ -14,13 +14,18 @@
         <td><h2><%= cart_item.product.album %></h2></td>
         <td><h2><%= cart_item.product.artist %></h2></td>
         <% if cart_item.product.on_sale %>
-          <td><h2><%= cart_item.product.sale_price %></h2></td>
+          <td><h2>$ <%= cart_item.product.sale_price %></h2></td>
         <% else %>
-          <td><h2><%= cart_item.product.price %></h2></td>
+          <td><h2>$ <%= cart_item.product.price %></h2></td>
         <% end %>
         <td><%= link_to 'Remove from cart', cart_item_path(id: cart_item.id), method: :delete %></td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="2">Total</td>
+      <td>$ <%= @cart.total %></td>
+      <td></td>
+    </tr>
   </table>
   <%= link_to 'Checkout', '#' %>
 <% end %>
