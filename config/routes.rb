@@ -4,7 +4,9 @@ StaunchRobots::Application.routes.draw do
 
   resources :user, only: [:show, :edit, :update]
   resources :products, only: [:index]
-  resources :carts, only: [:show]
+  resources :carts, only: [:show] do
+    get :clear, on: :collection
+  end
   resources :cart_items, only: [:create, :destroy]
   
   resources :categories do

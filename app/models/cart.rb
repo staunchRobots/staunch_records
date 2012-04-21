@@ -13,4 +13,8 @@ class Cart < ActiveRecord::Base
   def total
     products.to_a.sum(&:total)
   end
+
+  def clear
+    cart_items.delete_all
+  end
 end
