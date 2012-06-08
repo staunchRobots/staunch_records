@@ -12,7 +12,7 @@ describe Product do
     end
 
     context 'cart_items' do
-      it 'shoudl return empty array if no cart items associated'
+      it 'should return empty array if no cart items associated'
       it 'should return array of cart_item object'
     end
 

@@ -1,17 +1,11 @@
 FactoryGirl.define do
   factory :product do
-    album  "Album 1"
-    artist "Artist 1 "
-    description 'test description'
+    album 'Foo'
+    artist 'Bar'
     category { FactoryGirl.create(:category) }
-    price 100
-    qty 10
-    sale_price 80 
+    qty 99
+    price 49.99
     on_sale false
+    sale_price 29.99
   end
-
-  factory :product_without_category, parent: :product do
-    category { nil }
-  end
-  
 end

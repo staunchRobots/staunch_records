@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   has_many :cart_items
   has_many :carts, through: :cart_items
 
-  validates_presence_of   :album, :artist, :category_id, :qty, :price#, :picture
+  validates_presence_of   :album, :artist, :category_id, :qty, :price
   validates :qty,         numericality: { greater_than_or_equal_to: 0 }
   validates :price,       numericality: { greater_than: 0 }
   validates :category_id, numericality: { greater_than: 0 }
