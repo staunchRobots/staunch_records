@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe CartItem do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validations" do
+    it 'should validate presence of cart_id'
+    it 'should validate presence of product_id'
+  end
 end
