@@ -60,5 +60,5 @@ describe User do
     before { @user.admin = "yes" }
     it { should_not be_invalid }
   end
- 
+
 end

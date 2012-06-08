@@ -1,77 +1,59 @@
 require 'spec_helper'
 
 describe Product do
-  
-  let(:category) { FactoryGirl.create(:category) }
-  before { @product = category.products.build(album: "Hey Jude", artist: "The Beatles", qty: 1, price: 1000.00, on_sale: :true, sale_price: 900.99) }
 
-  subject { @product }
-
-  %w(album artist qty description price on_sale sale_price category_id category).each do |field|
-    it { should respond_to(field) }
+  context 'base' do
+    it 'should have valid factory'
   end
 
-  its(:category) { should == category }
+  context 'associations' do
+    context 'category' do
+      it 'should return category model'
+    end
 
-  it { should be_valid }
+    context 'cart_items' do
+      it 'shoudl return empty array if no cart items associated'
+      it 'should return array of cart_item object'
+    end
 
-  describe "with blank album" do
-    before { @product.album = " " }
-    it { should_not be_valid }
+    context 'carts' do
+      it 'should return empty array if product is not in any carts'
+      it 'should return array of carts if carts contain this product'
+    end
   end
 
-  describe "with blank artist" do
-    before { @product.artist = " " }
-    it { should_not be_valid }
+  context 'validations' do
+    context 'presence' do
+      it 'should validate presence of album'
+      it 'should validate presence of artist'
+      it 'should validate presence of category_id'
+      it 'should validate presence of qty'
+      it 'should validate presence of price'
+    end
+    context 'numericality' do
+      it 'should validate numericality of qty'
+      it 'should validate numericality of price'
+      it 'should validate numericality of sale_price'
+    end
+    context 'inclusion' do
+      it 'should validate inclusion of on_sale'
+    end
   end
 
-  describe "with blank on_sale" do
-    before { @product.on_sale = " " }
-    it { should_not be_valid }
+  context 'methods' do
+    it 'should return sale price if product is on sale and price - otherwise'
   end
 
-  describe "with blank category_id" do
-    before { @product.category_id = " " }
-    it { should_not be_valid }
+  context 'search' do
+    it 'should be searchable' # check out sunspot documentation on testing(if exists)
   end
 
-  describe "with a non-numeric qty" do
-    before { @product.qty = "string" }
-    it { should_not be_valid }
+  context 'frienly_id' do
+    it 'should have friendly id as album' # check out friendly_id documentation on testing(if exists)
   end
 
-  describe "with a non-numeric price" do
-    before { @product.price = "string" }
-    it { should_not be_valid }
+  context 'attached files' do
+    it 'should have attached file picture' # check out paperclip documentation on testing(if exists)
   end
 
-  describe "with a non-numeric sale_price" do
-    before { @product.sale_price = "string" }
-    it { should_not be_valid }
-  end
-
-  describe "with invalid qty" do
-    before { @product.qty = -1 }
-    it { should_not be_valid }
-  end
-
-  describe "with invalid price" do
-    before { @product.price = -1 }
-    it { should_not be_valid }
-  end
-
-  describe "with invalid on_sale value" do
-    before { @product.on_sale = "yes" }
-    it { should_not be_valid }
-  end
-
-  describe "with invalid low sale_price" do
-    before { @product.sale_price = -1 }
-    it { should_not be_valid }
-  end
-
-  describe "with invalid high sale_price" do
-    before { @product.sale_price = @product.price + 1 }
-    it { should_not be_valid }
-  end
 end

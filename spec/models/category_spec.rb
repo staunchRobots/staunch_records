@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe Category do
-  
-  before { @category = Category.new(name: "Rock", color: "grey") }
 
+  before { @category = Category.new(name: "Rock", color: "grey") }
   subject { @category }
 
   %w(name color).each do |field|
