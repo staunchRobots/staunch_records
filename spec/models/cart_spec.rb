@@ -12,7 +12,7 @@ describe Cart do
     context 'user' do
       it 'should return user model' do
         cart = FactoryGirl.create(:cart)
-        cart.user.should be_an_instance_of(User) 
+        cart.user.should be_an_instance_of(User)
       end
     end
 
@@ -21,13 +21,13 @@ describe Cart do
         cart = FactoryGirl.create(:cart)
         cart.cart_items.should be_empty
       end
-      
+
       it 'should return array of cart_item object' do
         cart = FactoryGirl.create(:cart)
         cart_item_one = FactoryGirl.create(:cart_item, cart: cart)
         cart_item_two = FactoryGirl.create(:cart_item, cart: cart)
 
-        cart.cart_items.should eq([cart_item_one, cart_item_two]) 
+        cart.cart_items.should eq([cart_item_one, cart_item_two])
       end
     end
 
@@ -66,11 +66,11 @@ describe Cart do
       user = FactoryGirl.create(:user, email: 'other@example.com')
       Cart.create_user_cart(user).should be_an_instance_of(Cart)
     end
-    
+
     it 'total should return summary of product prices in the cart' do
       @cart.total == (@product_one.price + @product_two.sale_price)
     end
-    
+
     it 'clear should delete all products in the cart' do
       @cart.clear
       @cart.products.should be_empty

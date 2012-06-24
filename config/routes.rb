@@ -8,7 +8,7 @@ StaunchRobots::Application.routes.draw do
     get :clear, on: :collection
   end
   resources :cart_items, only: [:create, :destroy]
-  
+
   resources :categories do
     resources :products
   end

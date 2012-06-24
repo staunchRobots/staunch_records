@@ -23,19 +23,19 @@ class SampleData
     puts "Creating products"
     category_ids = Category.all.map(&:id)
     30.times do |i|
-      Product.create!(album: "Whatever#{i}", 
-        artist: "Bob Marley #{31-i}", 
-        category_id: category_ids.sample, 
+      Product.create!(album: "Whatever#{i}",
+        artist: "Bob Marley #{31-i}",
+        category_id: category_ids.sample,
         sale_price: 5,
         on_sale: false,
-        qty: 10, 
-        price: 10+i*2, 
+        qty: 10,
+        price: 10+i*2,
       )
     end
   end
 
   def run
-    if Rails.env.production? 
+    if Rails.env.production?
       puts "Cannot run sample data script on production"
       return
     end

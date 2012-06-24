@@ -63,7 +63,7 @@ class Admin::ProductsController < AdminController
     Rails.logger.info '!!!!!!!!'
     Rails.logger.info @admin_product.errors.inspect
 
-    
+
     respond_to do |format|
       if @admin_product.save
         format.html { redirect_to [:admin, @admin_product], notice: 'Product was successfully updated.' }
